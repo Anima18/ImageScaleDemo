@@ -24,12 +24,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
 }
-task makeJar(type: proguard.gradle.ProGuardTask, dependsOn: "build") {
-// 未混淆的jar
-    injars 'build/intermediates/bundles/release/classes.jar'
-// 混淆后的jar路径
-    outjars 'build/http.jar'
-// 具体需要keep住的类
-    configuration 'proguard-rules.pro'
-}
+
 

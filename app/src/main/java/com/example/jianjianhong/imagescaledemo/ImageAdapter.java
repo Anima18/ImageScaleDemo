@@ -27,8 +27,8 @@ public class ImageAdapter extends BaseAdapter {
         this.context = context;
         this.imageIds = imageIds;
         this.layoutInflater = LayoutInflater.from(context);
-        this.imageViewWidth = DisplayUtil.dip2px(context, 100);
-        this.imageViewHeight = DisplayUtil.dip2px(context, 100);
+        this.imageViewWidth = DisplayUtil.dip2px(context, 500);
+        this.imageViewHeight = DisplayUtil.dip2px(context, 500);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ImageAdapter extends BaseAdapter {
             holder = (ViewHolder)convertView.getTag();
         }
 
-        /*InputStream is = context.getResources().openRawResource(imageIds.get(position));
+        InputStream is = context.getResources().openRawResource(imageIds.get(position));
         BitmapFactory.Options opts =  new BitmapFactory.Options();
         opts.inJustDecodeBounds = true;
 
@@ -78,18 +78,18 @@ public class ImageAdapter extends BaseAdapter {
 
         int scale = 1; //缩放比
 
-        if(scaleX >= scaleY && scaleY > 1){
+        if(scaleX >= scaleY && scaleY >= 1){
 
             scale = scaleX;
 
-        }else if(scaleY >= scaleX && scaleX > 1){
+        }else if(scaleY >= scaleX && scaleX >= 1){
 
             scale = scaleY;
 
         }
 
         //接下来解析图片
-
+        Log.i("ImageAdapter", "scale:"+scale);
         opts.inJustDecodeBounds = false;
         //采样率
 
@@ -97,8 +97,7 @@ public class ImageAdapter extends BaseAdapter {
 
         //Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), imageIds.get(position), opts);
         Bitmap bitmap = BitmapFactory.decodeStream(is, null, opts);
-        holder.imageView.setImageBitmap(bitmap);*/
-        holder.imageView.setImageResource(imageIds.get(position));
+        holder.imageView.setImageBitmap(bitmap);
 
         return convertView;
     }
